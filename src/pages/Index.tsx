@@ -1,8 +1,7 @@
 import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
 import { Features } from "@/components/landing/Features";
-import { ClinicalEvidence } from "@/components/landing/ClinicalEvidence";
-import { AppDownloadSection } from "@/components/landing/AppDownloadSection";
+import { DiabetesDiscussion } from "@/components/landing/DiabetesDiscussion";
 
 const Index = () => {
   return (
@@ -10,8 +9,7 @@ const Index = () => {
       <Header />
       <Hero />
       <Features />
-      <ClinicalEvidence />
-      <AppDownloadSection />
+      <DiabetesDiscussion />
     </div>
   );
 };

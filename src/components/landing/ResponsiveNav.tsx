@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface DropdownItem {
@@ -101,10 +103,15 @@ export function ResponsiveNav() {
         </a>
       </nav>
 
-      {/* Download Button - MySugr style */}
-      <button className="hidden md:block bg-primary hover:bg-primary-light text-primary-foreground px-6 py-3 rounded-2xl font-medium transition-all duration-200 hover:shadow-hover transform hover:scale-[1.02]">
-        Download DiabetesHelp
-      </button>
+      {/* Mobile Auth Buttons */}
+      <div className="md:hidden flex items-center gap-3">
+        <Button variant="ghost" size="sm" asChild>
+          <Link to="/login">Sign In</Link>
+        </Button>
+        <Button variant="default" size="sm" asChild>
+          <Link to="/signup">Sign Up</Link>
+        </Button>
+      </div>
 
       {/* Mobile Menu Button */}
       <button
@@ -167,14 +174,14 @@ export function ResponsiveNav() {
               </div>
             </div>
 
-            {/* Mobile CTA */}
-            <div className="p-6 border-t border-primary/10">
-              <button 
-                className="w-full bg-primary hover:bg-primary-light text-primary-foreground py-4 rounded-2xl font-medium transition-all duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Download DiabetesHelp
-              </button>
+            {/* Mobile Auth Buttons */}
+            <div className="p-6 border-t border-primary/10 space-y-3">
+              <Button variant="outline" size="lg" className="w-full" asChild>
+                <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>Sign In</Link>
+              </Button>
+              <Button variant="default" size="lg" className="w-full" asChild>
+                <Link to="/signup" onClick={() => setIsMobileMenuOpen(false)}>Sign Up</Link>
+              </Button>
             </div>
           </div>
         </div>

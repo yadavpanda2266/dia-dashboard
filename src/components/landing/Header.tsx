@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { ResponsiveNav } from "./ResponsiveNav";
 
 export function Header() {
@@ -18,8 +19,20 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Navigation */}
-          <ResponsiveNav />
+          {/* Navigation and Auth Buttons */}
+          <div className="flex items-center gap-6">
+            <ResponsiveNav />
+            
+            {/* Auth Buttons */}
+            <div className="hidden md:flex items-center gap-3">
+              <Button variant="ghost" asChild>
+                <Link to="/login">Sign In</Link>
+              </Button>
+              <Button variant="default" asChild>
+                <Link to="/signup">Sign Up</Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
