@@ -22,17 +22,20 @@ export function DropdownMenu({ trigger, items, className }: DropdownMenuProps) {
   return (
     <div className={cn("relative", className)}>
       <button
-        className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors group"
+        className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-all duration-300 group hover:scale-105 transform cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
         onBlur={() => setTimeout(() => setIsOpen(false), 150)}
       >
-        {trigger}
+        <span className="group-hover:translate-x-0.5 transition-transform duration-300">{trigger}</span>
         <ChevronDown 
           className={cn(
-            "w-4 h-4 transition-transform duration-200",
+            "w-4 h-4 transition-all duration-300 group-hover:scale-110",
             isOpen && "rotate-180"
           )} 
         />
+        
+        {/* Hover underline effect */}
+        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></div>
       </button>
 
       {isOpen && (
@@ -41,17 +44,23 @@ export function DropdownMenu({ trigger, items, className }: DropdownMenuProps) {
             <a
               key={index}
               href={item.href}
-              className="block p-4 rounded-xl hover:bg-primary/5 transition-colors group"
+              className="block p-4 rounded-xl hover:bg-primary/5 transition-all duration-300 group transform hover:scale-[1.02] hover:shadow-md cursor-pointer"
               onClick={() => setIsOpen(false)}
             >
-              <div className="font-medium text-foreground group-hover:text-primary transition-colors">
+              <div className="font-medium text-foreground group-hover:text-primary transition-colors duration-300 group-hover:translate-x-1">
                 {item.label}
               </div>
               {item.description && (
-                <div className="text-sm text-muted-foreground mt-1">
+                <div className="text-sm text-muted-foreground mt-1 group-hover:text-foreground transition-colors duration-300">
                   {item.description}
                 </div>
               )}
+              
+              {/* Hover indicator line */}
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></div>
+              
+              {/* Hover glow effect */}
+              <div className="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
             </a>
           ))}
         </div>
@@ -87,6 +96,7 @@ export function ResponsiveNav() {
     }
   ];
 
+
   return (
     <div className="flex items-center gap-8">
       {/* Desktop Navigation */}
@@ -95,11 +105,18 @@ export function ResponsiveNav() {
           trigger="What we offer" 
           items={whatWeOfferItems}
         />
-        <a href="#who-we-are" className="text-muted-foreground hover:text-foreground transition-colors">
-          Who we are
+        <a href="#who-we-are" className="text-muted-foreground hover:text-foreground transition-all duration-300 group hover:scale-105 transform cursor-pointer relative">
+          <span className="group-hover:translate-x-0.5 transition-transform duration-300">Who we are</span>
+          
+          {/* Hover underline effect */}
+          <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></div>
         </a>
-        <a href="#research" className="text-muted-foreground hover:text-foreground transition-colors">
-          Research
+        
+        <a href="#research" className="text-muted-foreground hover:text-foreground transition-all duration-300 group hover:scale-105 transform cursor-pointer relative">
+          <span className="group-hover:translate-x-0.5 transition-transform duration-300">Research</span>
+          
+          {/* Hover underline effect */}
+          <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></div>
         </a>
       </nav>
 
@@ -115,13 +132,13 @@ export function ResponsiveNav() {
 
       {/* Mobile Menu Button */}
       <button
-        className="lg:hidden p-2"
+        className="lg:hidden p-2 hover:bg-primary/10 rounded-lg transition-all duration-300 hover:scale-110 transform cursor-pointer group"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
         {isMobileMenuOpen ? (
-          <X className="w-6 h-6 text-foreground" />
+          <X className="w-6 h-6 text-foreground group-hover:text-primary transition-colors duration-300" />
         ) : (
-          <Menu className="w-6 h-6 text-foreground" />
+          <Menu className="w-6 h-6 text-foreground group-hover:text-primary transition-colors duration-300" />
         )}
       </button>
 
@@ -147,10 +164,13 @@ export function ResponsiveNav() {
                       <a
                         key={index}
                         href={item.href}
-                        className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+                        className="block py-2 text-muted-foreground hover:text-foreground transition-all duration-300 group hover:scale-105 transform cursor-pointer relative pl-2"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        {item.label}
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">{item.label}</span>
+                        
+                        {/* Hover indicator line */}
+                        <div className="absolute left-0 top-1/2 w-0 h-0.5 bg-primary group-hover:w-2 transition-all duration-300 transform -translate-y-1/2"></div>
                       </a>
                     ))}
                   </div>
@@ -158,18 +178,24 @@ export function ResponsiveNav() {
                 
                 <a 
                   href="#who-we-are" 
-                  className="block py-3 text-lg text-muted-foreground hover:text-foreground transition-colors"
+                  className="block py-3 text-lg text-muted-foreground hover:text-foreground transition-all duration-300 group hover:scale-105 transform cursor-pointer relative pl-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Who we are
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Who we are</span>
+                  
+                  {/* Hover indicator line */}
+                  <div className="absolute left-0 top-1/2 w-0 h-0.5 bg-primary group-hover:w-2 transition-all duration-300 transform -translate-y-1/2"></div>
                 </a>
                 
                 <a 
                   href="#research" 
-                  className="block py-3 text-lg text-muted-foreground hover:text-foreground transition-colors"
+                  className="block py-3 text-lg text-muted-foreground hover:text-foreground transition-all duration-300 group hover:scale-105 transform cursor-pointer relative pl-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Research
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Research</span>
+                  
+                  {/* Hover indicator line */}
+                  <div className="absolute left-0 top-1/2 w-0 h-0.5 bg-primary group-hover:w-2 transition-all duration-300 transform -translate-y-1/2"></div>
                 </a>
               </div>
             </div>
