@@ -168,7 +168,7 @@ export default function Dashboard() {
               
               {/* Hover glow effect */}
               <div className="absolute inset-0 bg-teal-200/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-            </div>
+              </div>
           </div>
         </div>
       </div>
