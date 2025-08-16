@@ -15,7 +15,7 @@ export function ActivityCard({ steps, targetSteps, activeMinutes, targetActiveMi
   const activityProgress = (activeMinutes / targetActiveMinutes) * 100;
 
   return (
-    <Card className="bg-gradient-to-br from-purple-50 to-purple-100/50 border-purple-200">
+    <Card className="bg-gradient-to-br from-purple-50 to-purple-100/50 border-purple-200 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer group">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg font-semibold text-purple-900">Activity & Fitness</CardTitle>

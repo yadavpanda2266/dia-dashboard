@@ -27,7 +27,7 @@ export function GlucoseCard({ currentReading, previousReading, targetRange, last
   const TrendIcon = trend.icon;
 
   return (
-    <Card className="bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200">
+    <Card className="bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer group">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg font-semibold text-blue-900">Blood Glucose</CardTitle>

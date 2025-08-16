@@ -1,6 +1,7 @@
 import { useUser, SignOutButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
-import { LogOut, Calendar, TrendingUp } from "lucide-react";
+import { LogOut, Calendar, TrendingUp, ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { GlucoseCard } from "@/components/dashboard/GlucoseCard";
 import { NutritionCard } from "@/components/dashboard/NutritionCard";
 import { ActivityCard } from "@/components/dashboard/ActivityCard";
@@ -9,6 +10,7 @@ import { QuickActions } from "@/components/dashboard/QuickActions";
 
 export default function Dashboard() {
   const { user } = useUser();
+  const navigate = useNavigate();
 
   // Mock data - in real app, this would come from API
   const glucoseData = {
@@ -63,17 +65,27 @@ export default function Dashboard() {
                <div className="w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-500 mt-2"></div>
              </div>
              
-             <div className="flex items-center gap-2 md:gap-3">
-               <Button 
-                 variant="outline" 
-                 size="sm" 
-                 className="flex items-center gap-2 group hover:bg-primary/10 hover:border-primary transition-all duration-300 hover:scale-105 transform"
-               >
-                 <Calendar className="w-4 h-4 group-hover:animate-pulse transition-all duration-300" />
-                 <span className="hidden sm:inline group-hover:translate-x-0.5 transition-transform duration-300">Today</span>
-               </Button>
-               
-               <SignOutButton>
+              <div className="flex items-center gap-2 md:gap-3">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => navigate('/')}
+                  className="flex items-center gap-2 group hover:bg-primary/10 hover:border-primary transition-all duration-300 hover:scale-105 transform"
+                >
+                  <ArrowLeft className="w-4 h-4 group-hover:animate-pulse transition-all duration-300" />
+                  <span className="hidden sm:inline group-hover:translate-x-0.5 transition-transform duration-300">Exit</span>
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex items-center gap-2 group hover:bg-primary/10 hover:border-primary transition-all duration-300 hover:scale-105 transform"
+                >
+                  <Calendar className="w-4 h-4 group-hover:animate-pulse transition-all duration-300" />
+                  <span className="hidden sm:inline group-hover:translate-x-0.5 transition-transform duration-300">Today</span>
+                </Button>
+                
+                <SignOutButton>
                  <Button 
                    variant="outline" 
                    size="sm" 
@@ -132,6 +144,7 @@ export default function Dashboard() {
               <Button 
                 variant="outline" 
                 size="sm" 
+                onClick={() => navigate('/trends')}
                 className="text-indigo-700 border-indigo-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 transition-all duration-300 hover:scale-105 transform"
               >
                 View Detailed Analytics
@@ -160,6 +173,10 @@ export default function Dashboard() {
                 <Button 
                   variant="outline" 
                   size="sm" 
+                  onClick={() => {
+                    // In a real app, this would navigate to appointments page
+                    console.log("Navigate to appointments");
+                  }}
                   className="text-teal-700 border-teal-300 w-full group-hover:bg-teal-600 group-hover:text-white group-hover:border-teal-600 transition-all duration-300 hover:scale-105 transform"
                 >
                   View All Appointments

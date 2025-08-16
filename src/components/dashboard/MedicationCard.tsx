@@ -21,7 +21,7 @@ export function MedicationCard({ medications, adherenceRate }: MedicationCardPro
   const overdueCount = medications.filter(med => med.overdue && !med.taken).length;
 
   return (
-    <Card className="bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200">
+    <Card className="bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer group">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg font-semibold text-orange-900">Medication Adherence</CardTitle>
