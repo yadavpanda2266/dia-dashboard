@@ -2,10 +2,12 @@ import { Plus, Camera, FileText, BarChart3, Settings, Bell } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FoodLoggingModal } from "./FoodLoggingModal";
 import { GlucoseLoggingModal } from "./GlucoseLoggingModal";
 
 export function QuickActions() {
+  const navigate = useNavigate();
   const [isFoodModalOpen, setIsFoodModalOpen] = useState(false);
   const [isGlucoseModalOpen, setIsGlucoseModalOpen] = useState(false);
 
@@ -29,33 +31,33 @@ export function QuickActions() {
       title: "Upload Report",
       description: "Add medical documents",
       color: "bg-purple-500 hover:bg-purple-600",
-      onClick: () => console.log("Upload report")
+      onClick: () => navigate('/reports')
     },
     {
       icon: BarChart3,
       title: "View Trends",
       description: "Analyze health patterns",
       color: "bg-orange-500 hover:bg-orange-600",
-      onClick: () => console.log("View trends")
+      onClick: () => navigate('/trends')
     },
     {
       icon: Settings,
       title: "Settings",
       description: "Manage preferences",
       color: "bg-gray-500 hover:bg-gray-600",
-      onClick: () => console.log("Settings")
+      onClick: () => navigate('/settings')
     },
     {
       icon: Bell,
       title: "Reminders",
       description: "Set medication alerts",
       color: "bg-red-500 hover:bg-red-600",
-      onClick: () => console.log("Reminders")
+      onClick: () => navigate('/reminders')
     }
   ];
 
   return (
-    <Card className="bg-gradient-to-br from-slate-50 to-slate-100/50 border-slate-200">
+    <Card className="bg-gradient-to-br from-slate-50 to-slate-100/50 border-slate-200 hover:shadow-lg transition-all duration-300">
       <CardHeader>
         <CardTitle className="text-lg font-semibold text-slate-900">Quick Actions</CardTitle>
       </CardHeader>
@@ -64,12 +66,12 @@ export function QuickActions() {
           {actions.map((action, index) => {
             const Icon = action.icon;
             return (
-                             <Button
-                 key={index}
-                 variant="ghost"
-                 className={`h-auto p-3 md:p-4 flex flex-col items-center gap-1 md:gap-2 ${action.color} text-white hover:text-white`}
-                 onClick={action.onClick}
-               >
+                <Button
+                  key={index}
+                  variant="ghost"
+                  className={`h-auto p-3 md:p-4 flex flex-col items-center gap-1 md:gap-2 ${action.color} text-white hover:text-white hover:scale-105 transition-all duration-200`}
+                  onClick={action.onClick}
+                >
                  <Icon className="w-5 h-5 md:w-6 md:h-6" />
                  <div className="text-center">
                    <div className="font-medium text-xs md:text-sm">{action.title}</div>

@@ -23,7 +23,7 @@ export function NutritionCard({ calories, carbs, protein, fat, targetCalories, m
   const status = getCalorieStatus();
 
   return (
-    <Card className="bg-gradient-to-br from-green-50 to-green-100/50 border-green-200">
+    <Card className="bg-gradient-to-br from-green-50 to-green-100/50 border-green-200 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer group">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg font-semibold text-green-900">Today's Nutrition</CardTitle>
